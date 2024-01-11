@@ -1,7 +1,7 @@
 
 # Nova Nested Tree Attach Many
-Support Laravel nova 4
-
+Support Laravel nova 4.
+for nova 3 , use <a href="https://github.com/phoenix-lib/nova-nested-tree-attach-many">this package</a>.
 ### Suppot:
 
 
@@ -19,7 +19,7 @@ Belongs To Many Field for simple manage Nested relation tree. Enables attaching 
 ### Installation
 
 ```bash
-composer require zakariatlilani\nova-nested-tree
+composer require zakariatlilani/nova-nested-tree
 ```
 
 ### Usage
@@ -29,7 +29,7 @@ This field uses tree provided by kalnoy/nestedset package
 This field uses riophae/vue-treeselect under the hood
 
 ```php
-use PhoenixLib\NestedTreeAttachMany\NestedTreeAttachManyField;
+use zakariatlilani\NovaNestedTree\NestedTreeAttachManyField;
 ```
 ```php
 public function fields(Request $request)
@@ -71,7 +71,7 @@ Here are a few customization options
 
 ```php
 use Whitecube\NovaFlexibleContent\Flexible;
-use PhoenixLib\NovaNestedTreeAttachMany\NestedTreeAttachManyField;
+use zakariatlilani\NovaNestedTree\NestedTreeAttachManyField;
 
 /**
  * Get the fields displayed by the resource.
@@ -93,7 +93,6 @@ public function fields(Request $request)
 }    
 ```
 
-
 ### Authorization
 This field also respects policies: ie Role / Permission
 - RolePolicy: attachAnyPermission($user, $role)
@@ -111,4 +110,8 @@ You can set min, max, size, required or custom rule objects
 Feel free to suggest changes, ask for new features or fix bugs yourself.
 
 Hope this package will be useful for you.
+
+### credit
+<a href="https://github.com/phoenix-lib/nova-nested-tree-attach-many">phoenix-lib</a>
+
 ---
