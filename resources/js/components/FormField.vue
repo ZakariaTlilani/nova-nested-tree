@@ -2,7 +2,7 @@
   <default-field :field="field" :errors="errors" :show-help-text="false" class="categories-tree">
     <template #field>
       <div class="flex">
-        <div :dir="field.rtl ? 'rtl' : 'ltr'" class="w-2/5 nova-tree-attach-many">
+        <div :dir="field.rtl ? 'rtl' : 'ltr'" class="w-full nova-tree-attach-many">
           <treeselect v-model="selectedValues"
                       :id="field.name"
                       :multiple="field.multiple"
@@ -40,6 +40,20 @@
 <style type="text/css">
 .categories-tree .py-6.px-8.w-1\/2 { width: 80%; }
 .category-list { list-style: none;}
+
+.vue-treeselect__multi-value-item {
+  background-color: rgba(var(--colors-primary-500),0.2);
+  color: rgba(var(--colors-primary-500));
+}
+
+.vue-treeselect__value-remove {
+  color: rgba(var(--colors-primary-500));
+}
+.vue-treeselect__checkbox--checked {
+  border-color: rgba(var(--colors-primary-500));
+  background-color: rgba(var(--colors-primary-500));
+}
+
 </style>
 
 <script>
@@ -136,32 +150,24 @@ export default {
           this.field.idKey
         ];
 
-        Nova.request( url.join('/') )
-            .then( ( data ) => {
-              if(!this.field.multiple)
-              {
-                this.selectedValues = data.data || undefined;
-              }
-              else
-              {
-                this.selectedValues = data.data || [];
-              }
-              this.forceRerender();
-              if(this.selectedValues.length > 0){
-                this.getCategoryFullPath(this.selectedValues);
-              }
-            } );
+        Nova.request().get( url.join('/') ).then( response => { 
+          if(!this.field.multiple)
+          {
+            this.selectedValues = response.data || undefined;
+          }
+          else
+          {
+            this.selectedValues = response.data || [];
+          }
+          this.forceRerender();
+          if(this.selectedValues.length > 0){
+            this.getCategoryFullPath(this.selectedValues);
+          }
+        });
       }
       else
       {
-        if(!this.field.multiple)
-        {
-          this.selectedValues = undefined;
-        }
-        else
-        {
-          this.selectedValues = [];
-        }
+        this.selectedValues = this.field.multiple?[]:undefined;
       }
     },
     fill( formData )
