@@ -15,6 +15,6 @@ class BelongsToManyHandler implements RelationHandler
 
     public function retrieve($model, $relationship, $idKey)
     {
-        return $model->{$relationship}->pluck($idKey)->all();
+        return $model->{$relationship}()->get()->pluck($idKey)->all();
     }
 }
