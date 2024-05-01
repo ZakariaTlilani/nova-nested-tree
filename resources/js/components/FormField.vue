@@ -40,7 +40,19 @@
 <style type="text/css">
 .categories-tree .py-6.px-8.w-1\/2 { width: 80%; }
 .category-list { list-style: none;}
-/*.vue-treeselect__label { background-color: rgba(var(--colors-primary-400)); }*/
+
+.vue-treeselect__multi-value-item {
+  background-color: rgba(var(--colors-primary-500),0.2);
+  color: rgba(var(--colors-primary-500));
+}
+
+.vue-treeselect__value-remove {
+  color: rgba(var(--colors-primary-500));
+}
+.vue-treeselect__checkbox--checked {
+  border-color: rgba(var(--colors-primary-500));
+  background-color: rgba(var(--colors-primary-500));
+}
 
 </style>
 
@@ -155,7 +167,7 @@ export default {
       }
       else
       {
-          this.selectedValues = this.field.multiple?[]:undefined;
+        this.selectedValues = this.field.multiple?[]:undefined;
       }
     },
     fill( formData )
